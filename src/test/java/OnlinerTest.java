@@ -18,6 +18,17 @@ public class OnlinerTest {
         driver.quit();
     }
 
+    @Test
+    public void testOpenOnlinerLoginForm() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get(OnlinerPage.URL);
+        By entranceBy = By.xpath(OnlinerPage.BTN_ENTRANCE);
+        WebElement btnEntrance = driver.findElement(entranceBy);
+        btnEntrance.click();
+
+        driver.quit();
+    }
 
 
 }
