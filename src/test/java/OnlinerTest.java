@@ -51,6 +51,7 @@ public class OnlinerTest {
         Assert.assertEquals("Nik text is wrong", elementNik.getText(), "Укажите ник или e-mail");
         Assert.assertEquals("Password text is wrong", elementPassword.getText(), "Укажите пароль");
     }
+
     @AfterClass
     public static void closeBrowser() {
         driver.quit();
