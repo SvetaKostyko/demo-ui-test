@@ -14,7 +14,13 @@ public class OnlinerTest {
         driver.get(OnlinerPage.URL);
         By copyrightBy = By.xpath(OnlinerPage.COPYRIGHT);
         WebElement copyrightElement = driver.findElement(copyrightBy);
-        System.out.println(copyrightElement.getText());
+        String textOfCopyright = copyrightElement.getText();
+        String realText = "© 2001—2023 Onlíner";
+        if (realText.equals(textOfCopyright)) {
+            System.out.println("Text is the same");
+        } else {
+            System.out.println("Text is wrong");
+        }
         driver.quit();
     }
 
@@ -26,9 +32,15 @@ public class OnlinerTest {
         By entranceBy = By.xpath(OnlinerPage.BTN_ENTRANCE);
         WebElement btnEntrance = driver.findElement(entranceBy);
         btnEntrance.click();
-
+        By textOfBtnBy = By.xpath(OnlinerPage.LABEL_ENTRANCE);
+        WebElement textOfBtnElement = driver.findElement(textOfBtnBy);
+        String textOfBtn = textOfBtnElement.getText();
+        String realText = "Вход";
+        if (realText.equals(textOfBtn)) {
+            System.out.println("Text is the same");
+        } else {
+            System.out.println("Text is wrong");
+        }
         driver.quit();
     }
-
-
 }
