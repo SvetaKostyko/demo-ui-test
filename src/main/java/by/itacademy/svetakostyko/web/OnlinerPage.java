@@ -9,5 +9,6 @@ public class OnlinerPage {
     public static final String BTN_ENTRANCE_SECOND = "//*[@class='auth-button auth-button_primary auth-button_middle auth-form__button auth-form__button_width_full']";
     public static final String ERROR_LABEL_NIK = "(//*[contains(@class , 'auth-form__description_error')])[1]";
     public static final String ERROR_LABEL_PASSWORD = "(//*[contains(@class , 'auth-form__description_error')])[2]";
+    public static final String INPUT_NIK = "(//*[contains(@class, 'auth-form__input_width_full')])[1]";
 
 }
