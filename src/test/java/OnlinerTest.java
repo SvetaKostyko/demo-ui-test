@@ -52,6 +52,18 @@ public class OnlinerTest {
         Assert.assertEquals("Password text is wrong", elementPassword.getText(), "Укажите пароль");
     }
 
+    @Test
+    public void testOnlinerLoginFormWithEmptyPassword() {
+        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
+        btnEntrance.click();
+        WebElement inputNik = driver.findElement(By.xpath(OnlinerPage.INPUT_NIK));
+        inputNik.sendKeys("test@gmail.com");
+        WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
+        elementBtnEntrance.click();
+        WebElement elementPassword = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD_ONLY));
+        Assert.assertEquals("Password text is wrong", elementPassword.getText(), "Укажите пароль");
+    }
+
     @AfterClass
     public static void closeBrowser() {
         driver.quit();
