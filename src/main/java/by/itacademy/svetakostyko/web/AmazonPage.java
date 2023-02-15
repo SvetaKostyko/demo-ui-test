@@ -7,4 +7,5 @@ public class AmazonPage {
     public static final String LABEL_CARD_IS_EMPTY = "//div[@class='a-row sc-your-amazon-cart-is-empty']";
     public static final String SIGH_IN_BTN = "//*[@id='a-autoid-0']/span";
     public static final String SIGN_IN_LABEL = "(//h1[contains(@class, 'a-spacing-small')])";
+    public static final String CONTINUE_BTN = "//*[@id='continue']";
 }
