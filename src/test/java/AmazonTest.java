@@ -23,15 +23,16 @@ public class AmazonTest {
         WebElement copyright = driver.findElement(By.xpath(AmazonPage.COPYRIGHT));
         Assert.assertEquals("Text is wrong", "© 1996-2023, Amazon.com, Inc. or its affiliates", copyright.getText());
     }
+
     @Test
     public void testOpenAmazonCart() {
         WebElement cartElement = driver.findElement(By.xpath(AmazonPage.CART));
         cartElement.click();
+        WebElement emptyCard = driver.findElement(By.xpath(AmazonPage.LABEL_CARD_IS_EMPTY));
+        Assert.assertEquals("my error", "Your Amazon Cart is empty", emptyCard.getText());
 
 
     }
-
-
 
 
     @After
