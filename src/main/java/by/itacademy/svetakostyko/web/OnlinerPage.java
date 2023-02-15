@@ -11,6 +11,4 @@ public class OnlinerPage {
     public static final String ERROR_LABEL_PASSWORD = "(//*[contains(@class , 'auth-form__description_error')])[2]";
     public static final String ERROR_LABEL_PASSWORD_ONLY = "(//*[contains(@class , 'auth-form__description_error')])[1]";
     public static final String INPUT_NIK = "(//*[contains(@class, 'auth-form__input_width_full')])[1]";
-
-
-}
+  }
