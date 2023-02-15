@@ -32,6 +32,15 @@ public class AmazonTest {
         Assert.assertEquals("my error", "Your Amazon Cart is empty", emptyCard.getText());
     }
 
+    @Test
+    public void testOpenAmazonLoginForm() {
+        WebElement cartElement = driver.findElement(By.xpath(AmazonPage.CART));
+        cartElement.click();
+        WebElement btnSignIn = driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN));
+        btnSignIn.click();
+        WebElement textOfSign = driver.findElement(By.xpath(AmazonPage.SIGN_IN_LABEL));
+        Assert.assertEquals("Another text", "Sign in", textOfSign.getText());
+    }
 
 
     @After
