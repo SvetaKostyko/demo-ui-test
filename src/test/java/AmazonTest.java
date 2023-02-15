@@ -30,9 +30,8 @@ public class AmazonTest {
         cartElement.click();
         WebElement emptyCard = driver.findElement(By.xpath(AmazonPage.LABEL_CARD_IS_EMPTY));
         Assert.assertEquals("my error", "Your Amazon Cart is empty", emptyCard.getText());
-
-
     }
+
 
 
     @After
