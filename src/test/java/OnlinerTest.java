@@ -10,8 +10,8 @@ import java.time.Duration;
 public class OnlinerTest {
     private static WebDriver driver;
 
-    @BeforeClass
-    public static void setupBrowser() {
+    @Before
+    public void setupBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -20,36 +20,29 @@ public class OnlinerTest {
 
     @Test
     public void testOpenOnliner() {
-        By copyrightBy = By.xpath(OnlinerPage.COPYRIGHT);
-        WebElement copyrightElement = driver.findElement(copyrightBy);
-        String textOfCopyright = copyrightElement.getText();
-        String realText = "© 2001—2023 Onlíner";
-        Assert.assertEquals("my error", textOfCopyright, realText);
+        WebElement copyrightElement = driver.findElement(By.xpath(OnlinerPage.COPYRIGHT));
+        Assert.assertEquals("my error", "© 2001—2023 Onlíner", copyrightElement.getText());
     }
 
 
     @Test
-    public void testOpenOnlinerLoginForm() {
-        By entranceBy = By.xpath(OnlinerPage.BTN_ENTRANCE);
-        WebElement btnEntrance = driver.findElement(entranceBy);
+    public void testOpenOnlinerLoginForm() throws InterruptedException {
+        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
         btnEntrance.click();
-        By textOfBtnBy = By.xpath(OnlinerPage.LABEL_ENTRANCE);
-        WebElement textOfBtnElement = driver.findElement(textOfBtnBy);
-        String textOfBtn = textOfBtnElement.getText();
-        String realText = "Вход";
-        Assert.assertEquals("Text is wrong", textOfBtn, realText);
+        WebElement textOfBtnElement = driver.findElement(By.xpath(OnlinerPage.LABEL_ENTRANCE));
+        Assert.assertEquals("Text is wrong", "Вход", textOfBtnElement.getText());
     }
 
     @Test
-    public void testOnlinerLoginFormWithEmptyCredentials() {
+    public void testOnlinerLoginFormWithEmptyCredentials() throws InterruptedException {
         WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
         btnEntrance.click();
         WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
         elementBtnEntrance.click();
         WebElement elementNik = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_NIK));
         WebElement elementPassword = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD));
-        Assert.assertEquals("Nik text is wrong", elementNik.getText(), "Укажите ник или e-mail");
-        Assert.assertEquals("Password text is wrong", elementPassword.getText(), "Укажите пароль");
+        Assert.assertEquals("Nik text is wrong", "Укажите ник или e-mail", elementNik.getText());
+        Assert.assertEquals("Password text is wrong", "Укажите пароль", elementPassword.getText());
     }
 
     @Test
@@ -61,11 +54,11 @@ public class OnlinerTest {
         WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
         elementBtnEntrance.click();
         WebElement elementPassword = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD_ONLY));
-        Assert.assertEquals("Password text is wrong", elementPassword.getText(), "Укажите пароль");
+        Assert.assertEquals("Password text is wrong", "Укажите пароль", elementPassword.getText());
     }
 
-    @AfterClass
-    public static void closeBrowser() {
+    @After
+    public void closeBrowser() {
         driver.quit();
     }
 }
