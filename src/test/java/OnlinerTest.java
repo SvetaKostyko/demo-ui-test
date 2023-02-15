@@ -26,7 +26,7 @@ public class OnlinerTest {
 
 
     @Test
-    public void testOpenOnlinerLoginForm() throws InterruptedException {
+    public void testOpenOnlinerLoginForm() {
         WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
         btnEntrance.click();
         WebElement textOfBtnElement = driver.findElement(By.xpath(OnlinerPage.LABEL_ENTRANCE));
@@ -34,7 +34,7 @@ public class OnlinerTest {
     }
 
     @Test
-    public void testOnlinerLoginFormWithEmptyCredentials() throws InterruptedException {
+    public void testOnlinerLoginFormWithEmptyCredentials() {
         WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
         btnEntrance.click();
         WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
