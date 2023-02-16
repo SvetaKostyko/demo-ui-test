@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class OnlinerTest {
-    private static WebDriver driver;
+    WebDriver driver;
 
     @Before
     public void setupBrowser() {
@@ -55,6 +55,18 @@ public class OnlinerTest {
         elementBtnEntrance.click();
         WebElement elementPassword = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD_ONLY));
         Assert.assertEquals("Password text is wrong", "Укажите пароль", elementPassword.getText());
+    }
+    @Test
+    public void testOnlinerLoginWithPasswordOnly() {
+        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
+        btnEntrance.click();
+        WebElement inputPassword = driver.findElement(By.xpath(OnlinerPage.INPUT_PASSWORD));
+        inputPassword.sendKeys("testOnliner");
+        WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
+        elementBtnEntrance.click();
+        WebElement elementNik = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_NIK));
+        Assert.assertEquals("Nik text is wrong", "Укажите ник или e-mail", elementNik.getText());
+
     }
 
     @After
