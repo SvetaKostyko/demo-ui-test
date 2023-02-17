@@ -36,7 +36,7 @@ public class AmazonTest {
     public void testOpenAmazonLoginForm() {
         WebElement cartElement = driver.findElement(By.xpath(AmazonPage.CART));
         cartElement.click();
-        WebElement btnSignIn = driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN));
+        WebElement btnSignIn = driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN_FROM_CARD));
         btnSignIn.click();
         WebElement textOfSign = driver.findElement(By.xpath(AmazonPage.SIGN_IN_LABEL));
         Assert.assertEquals("Another text", "Sign in", textOfSign.getText());
@@ -46,13 +46,26 @@ public class AmazonTest {
     public void testAmazonLoginFormWithEmptyCredentials() {
         WebElement cartElement = driver.findElement(By.xpath(AmazonPage.CART));
         cartElement.click();
-        WebElement btnSignIn = driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN));
+        WebElement btnSignIn = driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN_FROM_CARD));
         btnSignIn.click();
         WebElement continueBtnElement = driver.findElement(By.xpath(AmazonPage.CONTINUE_BTN));
         continueBtnElement.click();
         WebElement alertTextElement = driver.findElement(By.xpath(AmazonPage.ERROR_TEXT));
         Assert.assertEquals("Not this text", alertTextElement.getText(), "Enter your email or mobile phone number");
     }
+
+    @Test
+    public void testAmazonLoginFormCheckUserIsSigned() {
+        driver.findElement(By.xpath(AmazonPage.SIGN_IN_FROM_START)).click();
+        WebElement email = driver.findElement(By.xpath(AmazonPage.EMAIL_INPUT));
+        email.sendKeys("skostyko@gmail.com");
+        driver.findElement(By.xpath(AmazonPage.CONTINUE_BTN)).click();
+        WebElement password = driver.findElement(By.xpath(AmazonPage.PASSWORD_INPUT));
+        password.sendKeys("fiRTu7%%35");
+        driver.findElement(By.xpath(AmazonPage.SIGN_IN_SECOND)).click();
+        driver.findElement(By.xpath(AmazonPage.CHECK_USER_IS_SIGNED)).isDisplayed();
+    }
+
     @After
     public void closeBrowser() {
         driver.quit();
