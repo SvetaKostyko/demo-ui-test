@@ -20,52 +20,38 @@ public class OnlinerTest {
 
     @Test
     public void testOpenOnliner() {
-        WebElement copyrightElement = driver.findElement(By.xpath(OnlinerPage.COPYRIGHT));
-        Assert.assertEquals("my error", "© 2001—2023 Onlíner", copyrightElement.getText());
+        Assert.assertEquals("my error", "© 2001—2023 Onlíner", driver.findElement(By.xpath(OnlinerPage.COPYRIGHT)).getText());
     }
 
 
     @Test
     public void testOpenOnlinerLoginForm() {
-        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
-        btnEntrance.click();
-        WebElement textOfBtnElement = driver.findElement(By.xpath(OnlinerPage.LABEL_ENTRANCE));
-        Assert.assertEquals("Text is wrong", "Вход", textOfBtnElement.getText());
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE)).click();
+        Assert.assertEquals("Text is wrong", "Вход", driver.findElement(By.xpath(OnlinerPage.LABEL_ENTRANCE)).getText());
     }
 
     @Test
     public void testOnlinerLoginFormWithEmptyCredentials() {
-        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
-        btnEntrance.click();
-        WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
-        elementBtnEntrance.click();
-        WebElement elementNik = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_NIK));
-        WebElement elementPassword = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD));
-        Assert.assertEquals("Nik text is wrong", "Укажите ник или e-mail", elementNik.getText());
-        Assert.assertEquals("Password text is wrong", "Укажите пароль", elementPassword.getText());
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE)).click();
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND)).click();
+        Assert.assertEquals("Nik text is wrong", "Укажите ник или e-mail", driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_NIK)).getText());
+        Assert.assertEquals("Password text is wrong", "Укажите пароль", driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD)).getText());
     }
 
     @Test
     public void testOnlinerLoginFormWithEmptyPassword() {
-        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
-        btnEntrance.click();
-        WebElement inputNik = driver.findElement(By.xpath(OnlinerPage.INPUT_NIK));
-        inputNik.sendKeys("test@gmail.com");
-        WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
-        elementBtnEntrance.click();
-        WebElement elementPassword = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD_ONLY));
-        Assert.assertEquals("Password text is wrong", "Укажите пароль", elementPassword.getText());
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE)).click();
+        driver.findElement(By.xpath(OnlinerPage.INPUT_NIK)).sendKeys("test@gmail.com");
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND)).click();
+        Assert.assertEquals("Password text is wrong", "Укажите пароль", driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_PASSWORD_ONLY)).getText());
     }
+
     @Test
     public void testOnlinerLoginWithPasswordOnly() {
-        WebElement btnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE));
-        btnEntrance.click();
-        WebElement inputPassword = driver.findElement(By.xpath(OnlinerPage.INPUT_PASSWORD));
-        inputPassword.sendKeys("testOnliner");
-        WebElement elementBtnEntrance = driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND));
-        elementBtnEntrance.click();
-        WebElement elementNik = driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_NIK));
-        Assert.assertEquals("Nik text is wrong", "Укажите ник или e-mail", elementNik.getText());
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE)).click();
+        driver.findElement(By.xpath(OnlinerPage.INPUT_PASSWORD)).sendKeys("testOnliner");
+        driver.findElement(By.xpath(OnlinerPage.BTN_ENTRANCE_SECOND)).click();
+        Assert.assertEquals("Nik text is wrong", "Укажите ник или e-mail", driver.findElement(By.xpath(OnlinerPage.ERROR_LABEL_NIK)).getText());
 
     }
 
