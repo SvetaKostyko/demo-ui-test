@@ -26,8 +26,7 @@ public class AmazonTest {
 
     @Test
     public void testOpenAmazonCart() {
-        WebElement cartElement = driver.findElement(By.xpath(AmazonPage.CART));
-        cartElement.click();
+        driver.findElement(By.xpath(AmazonPage.CART)).click();
         WebElement emptyCard = driver.findElement(By.xpath(AmazonPage.LABEL_CARD_IS_EMPTY));
         Assert.assertEquals("my error", "Your Amazon Cart is empty", emptyCard.getText());
     }
@@ -44,10 +43,8 @@ public class AmazonTest {
 
     @Test
     public void testAmazonLoginFormWithEmptyCredentials() {
-        WebElement cartElement = driver.findElement(By.xpath(AmazonPage.CART));
-        cartElement.click();
-        WebElement btnSignIn = driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN_FROM_CARD));
-        btnSignIn.click();
+        driver.findElement(By.xpath(AmazonPage.CART)).click();
+        driver.findElement(By.xpath(AmazonPage.SIGH_IN_BTN_FROM_CARD)).click();
         WebElement continueBtnElement = driver.findElement(By.xpath(AmazonPage.CONTINUE_BTN));
         continueBtnElement.click();
         WebElement alertTextElement = driver.findElement(By.xpath(AmazonPage.ERROR_TEXT));
@@ -57,13 +54,12 @@ public class AmazonTest {
     @Test
     public void testAmazonLoginFormCheckUserIsSigned() {
         driver.findElement(By.xpath(AmazonPage.SIGN_IN_FROM_START)).click();
-        WebElement email = driver.findElement(By.xpath(AmazonPage.EMAIL_INPUT));
-        email.sendKeys("skostyko@gmail.com");
+        driver.findElement(By.xpath(AmazonPage.EMAIL_INPUT)).sendKeys("skostyko@gmail.com");
         driver.findElement(By.xpath(AmazonPage.CONTINUE_BTN)).click();
-        WebElement password = driver.findElement(By.xpath(AmazonPage.PASSWORD_INPUT));
-        password.sendKeys("fiRTu7%%35");
+        driver.findElement(By.xpath(AmazonPage.PASSWORD_INPUT)).sendKeys("fiRTu7%%35");
         driver.findElement(By.xpath(AmazonPage.SIGN_IN_SECOND)).click();
         driver.findElement(By.xpath(AmazonPage.CHECK_USER_IS_SIGNED)).isDisplayed();
+        System.out.println(driver.findElement(By.xpath(AmazonPage.CHECK_USER_IS_SIGNED)).getText());
     }
 
     @After
